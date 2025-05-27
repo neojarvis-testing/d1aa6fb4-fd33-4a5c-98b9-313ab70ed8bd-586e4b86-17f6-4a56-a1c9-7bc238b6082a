@@ -1,5 +1,11 @@
-package main.java.com.examly.springappuser.service;
+package com.examly.springappuser.service;
 
-public class UserService {
-    
+import com.examly.springappuser.model.User;
+import com.examly.springappuser.model.LoginDTO;
+
+import java.util.Optional;
+
+public interface UserService {
+    void createUser(User user);
+    LoginDTO loginUser(User user);
 }

@@ -1,0 +1,24 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: springappuser
+  datasource:
+    url: jdbc:mysql://localhost:3306/architectpoint_user
+    username: root
+    password: yourpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+app:
+  jwt:
+    secret: your_jwt_secret
+    expiration-ms: 86400000
