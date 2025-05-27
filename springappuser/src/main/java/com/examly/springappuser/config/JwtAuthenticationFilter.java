@@ -29,7 +29,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
             try {
-                email = Jwts.parser().setSigningKey(jwtUtils.getSecretKey()).parseClaimsJws(token).getBody().getSubject();
+                email = Jwts.parser().setSigningKey(jwtUtils.getSecretKey())
+                        .parseClaimsJws(token).getBody().getSubject();
             } catch (Exception e) {
                 logger.warn("JWT parsing error: " + e.getMessage());
             }

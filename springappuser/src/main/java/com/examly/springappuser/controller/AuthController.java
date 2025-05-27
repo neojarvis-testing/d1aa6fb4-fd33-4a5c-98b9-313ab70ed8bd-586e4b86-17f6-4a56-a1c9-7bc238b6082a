@@ -4,7 +4,7 @@ import com.examly.springappuser.model.LoginDTO;
 import com.examly.springappuser.model.User;
 import com.examly.springappuser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,9 +18,9 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
             userService.createUser(user);
-            return ResponseEntity.status(201).body(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(user);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Registration failed: " + e.getMessage());
         }
     }
 
